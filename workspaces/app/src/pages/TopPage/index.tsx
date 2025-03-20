@@ -26,7 +26,6 @@ const TopPage: React.FC = () => {
   const pickupA11yId = useId();
   const rankingA11yId = useId();
   const todayA11yId = useId();
-
   return (
     <Flex align="flex-start" direction="column" gap={Space * 2} justify="center" pb={Space * 2}>
       <Box as="header" maxWidth="100%" width="100%">
@@ -41,7 +40,7 @@ const TopPage: React.FC = () => {
           <Box maxWidth="100%" overflowX="scroll" overflowY="hidden">
             <Flex align="stretch" direction="row" gap={Space * 2} justify="flex-start">
               {_.map(featureList, (feature) => (
-                <FeatureCard key={feature.id} bookId={feature.book.id} />
+                <FeatureCard key={feature.id} book={feature.book} />
               ))}
             </Flex>
           </Box>
@@ -57,7 +56,7 @@ const TopPage: React.FC = () => {
           <Box maxWidth="100%" overflowX="hidden" overflowY="hidden">
             <Flex align="center" as="ul" direction="column" justify="center">
               {_.map(rankingList, (ranking) => (
-                <RankingCard key={ranking.id} bookId={ranking.book.id} />
+                <RankingCard key={ranking.id} book={ranking.book} />
               ))}
             </Flex>
           </Box>
@@ -73,7 +72,7 @@ const TopPage: React.FC = () => {
           <Box maxWidth="100%" overflowX="scroll" overflowY="hidden">
             <Flex align="stretch" gap={Space * 2} justify="flex-start">
               {_.map(release.books, (book) => (
-                <BookCard key={book.id} bookId={book.id} />
+                <BookCard key={book.id} book={book} />
               ))}
             </Flex>
           </Box>

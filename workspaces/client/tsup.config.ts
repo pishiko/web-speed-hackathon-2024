@@ -54,14 +54,20 @@ export default defineConfig(async (): Promise<Options[]> => {
         '.wasm': 'binary',
       },
       metafile: true,
-      minify: false,
+      minify: true,
       outDir: OUTPUT_DIR,
       platform: 'browser',
-      shims: true,
-      sourcemap: 'inline',
-      splitting: false,
+      shims: false,
+      sourcemap: process.env['NODE_ENV'] === 'development' ? 'inline' : false,
+      splitting: true,
       target: ['chrome58', 'firefox57', 'safari11', 'edge18'],
-      treeshake: false,
+      treeshake: true,
+      // 環境変数に応じて最適化レベルを調整
+      dts: false, // 型定義ファイルは本番では不要
+      minifyIdentifiers: true, // 変数名を短縮
+      minifySyntax: true, // 構文を最適化
+      minifyWhitespace: true, // 空白を削除
+      pure: ['console.log', 'console.debug'], // 開発用コードを削除
     },
   ];
 });
