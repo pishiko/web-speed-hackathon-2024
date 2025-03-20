@@ -67,7 +67,7 @@ const BookDetailPage: React.FC = () => {
     <Box height="100%" position="relative" px={Space * 2}>
       <_HeadingWrapper aria-label="作品情報">
         {bookImageUrl != null && (
-          <Image alt={book.name} height={256} objectFit="cover" src={bookImageUrl} width={192} />
+          <Image alt={book.name} height={256} objectFit="cover" src={bookImageUrl} width={192} loading="eager" />
         )}
         <Flex align="flex-start" direction="column" gap={Space * 1} justify="flex-end">
           <Box>
@@ -107,7 +107,7 @@ const BookDetailPage: React.FC = () => {
       <section aria-label="エピソード一覧">
         <Flex align="center" as="ul" direction="column" justify="center">
           {episodeList.map((episode) => (
-            <EpisodeListItem key={episode.id} bookId={bookId} episodeId={episode.id} />
+            <EpisodeListItem key={episode.id} book={book} episode={episode} />
           ))}
           {episodeList.length === 0 && (
             <>
